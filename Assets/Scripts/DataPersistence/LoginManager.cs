@@ -78,6 +78,10 @@ public class LoginManager : MonoBehaviour
         UserData newUser = new UserData(username, pin, 0, 0);
         usersData.Add(username, newUser);
         SaveUserData();
+
+        currentUser = username;
+        loggedIn = true;
+        LoadUserProgress();
     }
 
     public bool DeleteUser(string username, string pin)
