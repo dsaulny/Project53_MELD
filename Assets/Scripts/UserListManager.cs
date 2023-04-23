@@ -9,6 +9,7 @@ public class UserListManager : MonoBehaviour
     [SerializeField] private GameObject userButtonPrefab;
     [SerializeField] private Transform userListContent;
     [SerializeField] private InputField pinInputField;
+    [SerializeField] private DeleteConfirmationController deleteConfirmationController;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class UserListManager : MonoBehaviour
             userButton.GetComponent<Button>().onClick.AddListener(() => loginManager.SetUsername(entry.Key));
 
             Button deleteButton = userButton.transform.Find("DeleteButton").GetComponent<Button>();
-            deleteButton.onClick.AddListener(() => AttemptDeleteUser(entry.Key));
+            deleteButton.onClick.AddListener(() => deleteConfirmationController.ShowDeleteConfirmation(entry.Key));
         }
     }
 
@@ -54,7 +55,7 @@ public class UserListManager : MonoBehaviour
         }
     }
 
-    private void AttemptDeleteUser(string username)
+    public void AttemptDeleteUser(string username)
     {
         string pin = pinInputField.text;
 
@@ -67,6 +68,18 @@ public class UserListManager : MonoBehaviour
         {
             Debug.LogError("Failed to delete user.");
         }
+
+        deleteConfirmationController.ShowDeleteConfirmation(username);
+    }
+
+    public bool ValidatePin(string username, string pin)
+    {
+        UserData userData;
+        if (loginManager.GetUsersData().TryGetValue(username, out userData))
+        {
+            return userData.pin == pin;
+        }
+        return false;
     }
 }
 
