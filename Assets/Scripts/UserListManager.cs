@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UserListManager : MonoBehaviour
 {
@@ -31,9 +32,13 @@ public class UserListManager : MonoBehaviour
         foreach (KeyValuePair<string, UserData> entry in usersData)
         {
             GameObject userButton = Instantiate(userButtonPrefab, userListContent);
+            //need to adjust this later
             float progressPercentage = entry.Value.progress * 100f; // Assuming progress is stored as a float between 0 and 1.
             userButton.GetComponentInChildren<TextMeshProUGUI>().text = $"{entry.Key} \r\n Tutorial Progress: {progressPercentage}% \r\n Total Time Taken: {FormatTime(entry.Value.timeSpent)}";
-            userButton.GetComponent<Button>().onClick.AddListener(() => loginManager.SetUsername(entry.Key));
+            userButton.GetComponent<Button>().onClick.AddListener(() => {
+                loginManager.SetUsername(entry.Key);
+                LoadHomeScene();   
+            });
 
             Button deleteButton = userButton.transform.Find("DeleteButton").GetComponent<Button>();
             deleteButton.onClick.AddListener(() => deleteConfirmationController.ShowDeleteConfirmation(entry.Key));
@@ -80,6 +85,11 @@ public class UserListManager : MonoBehaviour
             return userData.pin == pin;
         }
         return false;
+    }
+
+    private void LoadHomeScene()
+    {
+        SceneManager.LoadScene("S1_Home");
     }
 }
 
