@@ -1,5 +1,5 @@
 using UnityEngine;
-
+/*
 public class TutorialController : MonoBehaviour
 {
     [SerializeField] private GameObject[] tutorialSteps;
@@ -341,3 +341,4 @@ public class TutorialController : MonoBehaviour
         }
     }
 }
+*/

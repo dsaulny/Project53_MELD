@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
-    public void AdminLogin()
+    public void Home()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void Logout()
+    public void Welcome()
     {
         SceneManager.LoadScene(0);
     }
