@@ -533,8 +533,8 @@ public class TutorialController : MonoBehaviour
         tutorialText.text = "";
         tutorialImage.sprite = null;
         tutorialImage.enabled = false;
-        //tutorialVideo.clip = null;
-        //tutorialVideo.enabled = false;
+        tutorialVideo.clip = null;
+        tutorialVideo.enabled = false;
 
         // Load text
         tutorialText.text = tutorialSteps[step][0];
