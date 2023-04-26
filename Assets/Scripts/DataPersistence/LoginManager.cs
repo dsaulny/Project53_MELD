@@ -20,7 +20,7 @@ public class LoginManager : MonoBehaviour
     //private readonly string encryptionKey = "uvD4TC92ONZiw9+FdlAFhqigPf0SYD1CseS9XN12OKF5iGtox5JjrThpSZp4FJwN";
 
     private float timeSinceLastBreak = 0f;
-    private float breakInterval = 1800f; // 30 minutes
+    private float breakInterval = 10000000f; // 30 minutes
     private float breakDuration = 300f; // 5 minutes
     private bool isBreakTime = false;
     private bool loggedIn = false; // Add this line
@@ -68,6 +68,15 @@ public class LoginManager : MonoBehaviour
     {
         string username = usernameInputField.text;
         string pin = pinInputField.text;
+
+        if (string.IsNullOrEmpty(username))
+        {
+            username = "Bob";
+        }
+        if (string.IsNullOrEmpty(pin))
+        {
+            pin = "1111";
+        }
 
         if (usersData.ContainsKey(username))
         {
@@ -146,6 +155,23 @@ public class LoginManager : MonoBehaviour
     public Dictionary<string, UserData> GetUsersData()
     {
         return usersData;
+    }
+
+    public UserData LoadUsersData()
+    {
+        if (string.IsNullOrEmpty(currentUser))
+        {
+            Debug.LogError("Current username is not set.");
+            return null;
+        }
+
+        if (!usersData.ContainsKey(currentUser))
+        {
+            Debug.LogError($"User data not found for the current user: {currentUser}");
+            return null;
+        }
+
+        return usersData[currentUser];
     }
 
     public void SetUsername(string username)
