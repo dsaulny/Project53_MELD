@@ -33,7 +33,7 @@ public class UserListManager : MonoBehaviour
         {
             GameObject userButton = Instantiate(userButtonPrefab, userListContent);
             //95 == number of slides total
-            float progressPercentage = entry.Value.progress / 95f; // Assuming progress is stored as a float between 0 and 1.
+            string progressPercentage = ((entry.Value.progress / 95f) * 100f).ToString("F2");
             userButton.GetComponentInChildren<TextMeshProUGUI>().text = $"{entry.Key} \r\n Tutorial Progress: {progressPercentage}% \r\n Total Time Taken: {FormatTime(entry.Value.timeSpent)}";
             userButton.GetComponent<Button>().onClick.AddListener(() => {
                 loginManager.SetUsername(entry.Key);
