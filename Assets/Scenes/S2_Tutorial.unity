@@ -943,7 +943,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72865485}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8923e39b71da0ac49a8f1686ec282529, type: 3}
   m_Name: 
@@ -976,6 +976,42 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   TextOnly: {fileID: 0}
+  slideText:
+  - 'The most important thing we want you to leave with after this tutorial is all
+    of your limbs! So please take this section seriously.
+
+
+    The MELD machine
+    has numerous safety mechanisms built into itself. But there are steps you will
+    take where you can harm yourself.'
+  - "Before we begin, make sure you take off all loose jewelry like long necklaces
+    and clothing items such as unzipped jackets. \n\nIf you have long hair, tie it
+    back so it does not get in the way."
+  - "Make sure the area around you is clear. There should be ample space to move
+    in front of the MELD machine and the console. With the headset, you are more
+    prone to tripping, so check the floor as well. \n\nIf you have not done so yet,
+    put on safety glasses. There is a step where you use an air spray to clear the
+    base plate and metal flakes will fly towards you. The HoloLens alone will not
+    ensure protection from the flakes damaging your eyes."
+  - "As said before, the MELD machine has many safety features. Let\u2019s walk through
+    them.\n\nWhen the MELD machine is running, the doors must remain closed. If the
+    doors open, the machine will stop (like a microwave), but it will mess up the
+    print.\n\nThere is an emergency stop button at the stop left of the console.
+    If something goes wrong, do not hesitate to press the button. Prints are cheap
+    to restart, repairs and medical bills are not cheap.\n\nThe \u201Cremote jog
+    handle\u201D also has an emergency stop and a \u201Cdeadman\u201D switch. The
+    deadman switch means you must hold the switch down in order to move the actuator
+    during preparation. We will cover this in the tutorial."
+  - "Lastly, and this is the most important, do not touch the printed material after
+    you begin the print. The material is extremely hot and will burn you. There are
+    special gloves to do so, but we will not have you use them. Instead, you must
+    wait for it to cool after printing.\n\nThat\u2019s it! We will remind you of
+    safety procedures to follow when you arrive at the step."
+  - '{{ safety checklist will go here }}'
+  - '{{ END OF TEST }}
+
+
+    Operation portion of the tutorial will start here.'
 --- !u!1 &86030769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,7 +3711,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 119599023}
         m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
-        m_MethodName: AdminLogin
+        m_MethodName: Home
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24147,7 +24183,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745025915}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4684083f6dff4a1d8a790bccc354fcf4, type: 3}
   m_Name: 
@@ -24160,15 +24196,15 @@ MonoBehaviour:
   smoothing: 1
   lifetime: 0
   referenceDirection: 1
-  minDistance: 0.3
-  maxDistance: 0.6
+  minDistance: 0.2
+  maxDistance: 0.4
   minViewDegrees: 0
   maxViewDegrees: 15
   aspectV: 1
   ignoreAngleClamp: 0
   ignoreDistanceClamp: 0
   useFixedVerticalPosition: 1
-  fixedVerticalPosition: -0.4
+  fixedVerticalPosition: -0.1
   orientToReferenceDirection: 0
 --- !u!82 &1745025918
 AudioSource:
