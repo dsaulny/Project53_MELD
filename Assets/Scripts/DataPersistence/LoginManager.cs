@@ -178,7 +178,8 @@ public class LoginManager : MonoBehaviour
 
     public void SetUsername(string username)
     {
-        usernameInputField.text = username;
+        //usernameInputField.text = username;
+        currentUser = username;
     }
 
     private void Update()

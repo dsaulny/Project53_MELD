@@ -32,11 +32,12 @@ public class UserListManager : MonoBehaviour
         foreach (KeyValuePair<string, UserData> entry in usersData)
         {
             GameObject userButton = Instantiate(userButtonPrefab, userListContent);
-            //need to adjust this later
-            float progressPercentage = entry.Value.progress * 100f; // Assuming progress is stored as a float between 0 and 1.
+            //95 == number of slides total
+            float progressPercentage = entry.Value.progress / 95f; // Assuming progress is stored as a float between 0 and 1.
             userButton.GetComponentInChildren<TextMeshProUGUI>().text = $"{entry.Key} \r\n Tutorial Progress: {progressPercentage}% \r\n Total Time Taken: {FormatTime(entry.Value.timeSpent)}";
             userButton.GetComponent<Button>().onClick.AddListener(() => {
                 loginManager.SetUsername(entry.Key);
+                loginManager.LoadUserProgress();
                 LoadHomeScene();   
             });
 
