@@ -20,7 +20,7 @@ public class LoginManager : MonoBehaviour
     //private readonly string encryptionKey = "uvD4TC92ONZiw9+FdlAFhqigPf0SYD1CseS9XN12OKF5iGtox5JjrThpSZp4FJwN";
 
     private float timeSinceLastBreak = 0f;
-    private float breakInterval = 10000000f; // 30 minutes
+    private float breakInterval = 1000000f; // 30 minutes
     private float breakDuration = 300f; // 5 minutes
     private bool isBreakTime = false;
     private bool loggedIn = false; // Add this line
@@ -91,6 +91,8 @@ public class LoginManager : MonoBehaviour
         currentUser = username;
         loggedIn = true;
         LoadUserProgress();
+        //for testing
+        Debug.Log("Created a user with name: " + username + " and pin: " + pin);
     }
 
     public bool DeleteUser(string username, string pin)
@@ -181,6 +183,8 @@ public class LoginManager : MonoBehaviour
 
     private void Update()
     {
+        //Should be working
+        /*
         if (loggedIn)
         {
             if (!isBreakTime)
@@ -202,8 +206,10 @@ public class LoginManager : MonoBehaviour
 
             usersData[currentUser].timeSpent += Time.deltaTime;
         }
+        */
     }
 
+    /*
     private IEnumerator BreakTime()
     {
         // Notify the user to take a break
@@ -216,6 +222,7 @@ public class LoginManager : MonoBehaviour
         timeSinceLastBreak = 0f;
         isBreakTime = false;
     }
+    */
 
     private void OnApplicationQuit()
     {

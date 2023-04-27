@@ -55,7 +55,7 @@ public class TutorialController : MonoBehaviour
         //10
         new string[] {
             "First, we need to turn on the machine. Go to the back of the machine and twist the power switch.",
-            "Videos/TurnOnMachine"
+            "Videos/Slide08"
         },
 
         //Slide09
@@ -135,7 +135,7 @@ public class TutorialController : MonoBehaviour
         //19 in manual
         new string[] {
             "In order to set the substrate in place, you may need to twist the pieces that will tightly hold the substrate out of the way. You will also need to remove the 2 side-supports on the substrate holder that are closer to the door. These are custom holders to provide additional support and further prevent small movements in the baseplate (yes, there is a lot of pressure and friction!)",
-            "Videos/TwistPieces"
+            "Videos/Slide19"
         }, 
 
         //25
@@ -153,7 +153,7 @@ public class TutorialController : MonoBehaviour
         //26
         new string[] {
             "Re-twist the pieces on top of the substrate and set the golden-colored holders back into place.",
-            "Videos/ReTwistPieces"
+            "Videos/Slide22"
         },
 
         //27
@@ -321,14 +321,14 @@ public class TutorialController : MonoBehaviour
 
         //55
         new string[] {
-            "Under the “Actuator” section, press settings.\n\nSet the soft limit to 19. This limits how far the actuator will push. This means the push rod will only go down 19 inches from its max height of 20.5 inches. We don’t want the pushrod itself pushing onto the substrate, which is why we need the soft limit.",
-            "Videos/Actuator"
+            "Under the “Actuator” section, press settings.\n\nSet the soft limit to 19. This limits how far the actuator will push. This means the push rod will only go down 19 inches from its max height of 20.5 inches. We don’t want the pushrod itself pushing onto the substrate, which is why we need the soft limit."
+            //"Videos/Actuator"
         },
 
         //56
         new string[] {
-            "Set “0.1 ipm Velocity Force” to 4800. It determines at which actuator force level the actuator speed will be automatically reduced to 0.1 inch/minute (ipm) to help prevent damage to the machine. This will not automatically stop the actuator, only reduce its speed, so you need to be ready to stop the actuator. The actuator is (most of the time) the only thing that can damage the machine. If the actuator is not running, the machine will usually be fine.",
-            "Videos/Actuator"
+            "Set “0.1 ipm Velocity Force” to 4800. It determines at which actuator force level the actuator speed will be automatically reduced to 0.1 inch/minute (ipm) to help prevent damage to the machine. This will not automatically stop the actuator, only reduce its speed, so you need to be ready to stop the actuator. The actuator is (most of the time) the only thing that can damage the machine. If the actuator is not running, the machine will usually be fine."
+            //"Videos/Actuator"
         },
 
         //57
@@ -502,13 +502,13 @@ public class TutorialController : MonoBehaviour
 
         //84
         new string[] {
-            "On the console, press “Stop CSV Recording”. Now you will need to remove the substrate to retrieve your print. Do not touch the printed material with your bare hands! It will burn you!",
-            "Videos/ChangeAllenWrench"
+            "On the console, press “Stop CSV Recording”. Now you will need to remove the substrate to retrieve your print. Do not touch the printed material with your bare hands! It will burn you!"
+            //"Videos/ChangeAllenWrench"
         },
 
         new string[] {
-            "Open the doors and get the allen wrench back from the cart that you used earlier. Untighten the screws, but do not touch anything other than the wrench with your hands. For the wrench, twist the lever on the back to change the direction it operates.",
-            "Videos/ChangeAllenWrench"
+            "Open the doors and get the allen wrench back from the cart that you used earlier. Untighten the screws, but do not touch anything other than the wrench with your hands. For the wrench, twist the lever on the back to change the direction it operates."
+            //"Videos/ChangeAllenWrench"
         },
 
         //85
