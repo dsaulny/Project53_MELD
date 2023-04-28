@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream:Assets/Scripts/DeleteConfirmationController.cs.meta
-guid: a1457ec51e6eb874dac7a7ef3d22fca8
-=======
 guid: d465906fca729f94d96708d127d882ce
->>>>>>> Stashed changes:Assets/Scripts/DataPersistence/ObjDetect.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
