@@ -9,7 +9,7 @@ using Unity.Barracuda;
 using TMPro;
 
 
-public class newobjdetect : MonoBehaviour
+public class ObjDetect : MonoBehaviour
 {
     // Start is called before the first frame update
     WebCamTexture camTexture;
@@ -23,9 +23,8 @@ public class newobjdetect : MonoBehaviour
     private string outputLayerName;
     public Toggle objToggle;
     public float detectionThreshold = 0.60f;
-    public RawImage cameraView;
-    private GameObject lastBB;
-    private GameObject lastT;
+    //public RawImage cameraView;
+    
 
 
     void Start()
@@ -37,7 +36,7 @@ public class newobjdetect : MonoBehaviour
         runtimeModel = ModelLoader.Load(yoloModel);
         worker = WorkerFactory.CreateWorker(WorkerFactory.Type.Auto, runtimeModel);
         outputLayerName = runtimeModel.outputs[runtimeModel.outputs.Count - 1];
-        cameraView.texture = camTexture;
+        //cameraView.texture = camTexture;
     }
 
     // Update is called once per frame
@@ -124,20 +123,21 @@ public class newobjdetect : MonoBehaviour
             
             (int classIdx, float maxClass) = GetClassIdx(tensor, i);
             var className = GetClassName(classIdx);
-            UnityEngine.Debug.Log($"Image was recognised as {className}");
-            outputClass.text = className;
+            
             float maxScore = confidence * maxClass;
 
             if (maxScore < thresholdMax)
                 continue;
-            float X = tensor[0, 0, 0, i];
+            UnityEngine.Debug.Log($"Image was recognised as {className}");
+            outputClass.text = className;
+            /*float X = tensor[0, 0, 0, i];
             float Y = tensor[0, 0, 1, i];
             float Width = tensor[0, 0, 2, i];
             float Height = tensor[0, 0, 3, i];
-            UnityEngine.Rect bbox = new UnityEngine.Rect(X, Y, Width, Height);
+            UnityEngine.Rect bbox = new UnityEngine.Rect(X, Y, Width, Height);*/
         }
 
-        //return boxes;
+        
     }
   
 
