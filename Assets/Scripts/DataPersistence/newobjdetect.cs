@@ -43,7 +43,7 @@ public class ObjDetect : MonoBehaviour
     void Update()
     {
 
-        if (Time.frameCount % 2 == 0)
+        if (Time.frameCount % 5 == 0)
         {
             detect();
         }
