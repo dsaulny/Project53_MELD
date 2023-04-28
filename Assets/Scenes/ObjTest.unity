@@ -441,11 +441,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d465906fca729f94d96708d127d882ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yoloModel: {fileID: 5022602860645237092, guid: e39d6a0a290b38949809609a3a4b0f11,
+  yoloModel: {fileID: 5022602860645237092, guid: 91f7abac19e34ca41ad488047db0347c,
     type: 3}
   outputClass: {fileID: 971770616}
   objToggle: {fileID: 902445945}
-  detectionThreshold: 0.55
+  detectionThreshold: 0.6
 --- !u!1 &295854974
 GameObject:
   m_ObjectHideFlags: 0

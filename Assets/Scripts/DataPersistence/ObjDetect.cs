@@ -9,7 +9,7 @@ using Unity.Barracuda;
 using TMPro;
 
 
-public class newobjdetect : MonoBehaviour
+public class ObjDetect : MonoBehaviour
 {
     // Start is called before the first frame update
     WebCamTexture camTexture;
