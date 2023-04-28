@@ -11,9 +11,9 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private UserData userData;
     [SerializeField] private LoginManager loginManager;
     public RawImage Video_RawImage;
-    [SerializeField] private GameObject uniqueSlide;
-    [SerializeField] private GameObject mainSlide;
-    //public Toggle[] checkboxes;
+    //[SerializeField] private GameObject uniqueSlide;
+    //[SerializeField] private GameObject mainSlide;
+    //public GameObject[] checkboxes;
 
     private string[][] tutorialSteps = new string[][]
     {
@@ -113,7 +113,11 @@ public class TutorialController : MonoBehaviour
 
         //20
         new string[] {
-            "The second three buttons are the x1, x10, and x100 buttons. These set which speed you want to move the machine with \n\nThe black wheel at the bottom allows you to move the machine in the positive or negative direction with respect to the axis that you choose (X, Y, or Z). To the right is positive and to the left is negative.\n\nFinally, the button 'MPG Feed' will toggle the mode of the controller so that you can move the machine."
+            "The second three buttons are the x1, x10, and x100 buttons. These set which speed you want to move the machine with \n\nThe black wheel at the bottom allows you to move the machine in the positive or negative direction with respect to the axis that you choose (X, Y, or Z). To the right is positive and to the left is negative.\n\nPage 1/2"
+        },
+
+        new string[] {
+            "Finally, the button 'MPG Feed' will toggle the mode of the controller so that you can move the machine.\n\n Page 2/2"
         },
 
         //21
@@ -285,7 +289,12 @@ public class TutorialController : MonoBehaviour
 
         //49
         new string[] {
-            "The Gcode follows these simple steps:\nM04 S300 sets the spindle speed at 300 rotations per second, the speed at which the tool rotates.\nM24 S6000 sets the rod push down speed at 6 inches per minute.\nX-9 tells the source to move to current x (0 at the beginning) minus nine, or nine inches.\nThen it moves vertically in a zig-zag direction up to the next layer.\nFinally, it moves back nine inches to the initial location.\nOverall, it goes left 9 inches, up to the next layer, then right 9 inches.\nAfter that, it stops and returns to the reload position.",
+            "The Gcode follows these simple steps:\nM04 S300 sets the spindle speed at 300 rotations per second, the speed at which the tool rotates.\nM24 S6000 sets the rod push down speed at 6 inches per minute.\nX-9 tells the source to move to current x (0 at the beginning) minus nine, or nine inches.\n\nPage 1/2",
+            "Images/MELD_GCode"
+        },
+
+        new string[] {
+            "Then it moves vertically in a zig-zag direction up to the next layer.\nFinally, it moves back nine inches to the initial location.\nOverall, it goes left 9 inches, up to the next layer, then right 9 inches.\nAfter that, it stops and returns to the reload position.\n\nPage 2/2",
             "Images/MELD_GCode"
         },
 
@@ -410,14 +419,16 @@ public class TutorialController : MonoBehaviour
 
         //Double check for sizing
         //69
+        //commented out for Dr. Nik
         new string[] {
-            "The first layer will usually look bad. A good layer looks smooth. A bad layer has bumps and edges. You should decrease the FRO to 70% (or lower, if needed) if the layer looks really bad (reference picture). When you change the FRO, use the +10% or -10% buttons.",
-            "Images/firstLayer"
+            "The first layer will usually look bad. A good layer looks smooth. A bad layer has bumps and edges. You should decrease the FRO to 70% (or lower, if needed) if the layer looks really bad (reference picture). When you change the FRO, use the +10% or -10% buttons."
+            //"Images/firstLayer"
         },
 
+        //commented out for Dr. Nik
         new string[] {
-            "Once it stops, raises, and goes back to the right, set the FPO back to 100% and leave it there.\n\nYou may run out of feed material if starting the first layer took a long time. That is okay. The next layer will mostly cover it up.",
-            "Images/secondLayer"
+            "Once it stops, raises, and goes back to the right, set the FPO back to 100% and leave it there.\n\nYou may run out of feed material if starting the first layer took a long time. That is okay. The next layer will mostly cover it up."
+            //"Images/secondLayer"
         },
 
         //70
@@ -547,7 +558,7 @@ public class TutorialController : MonoBehaviour
 
         //90
         new string[] {
-            "Congratulations! You have finished the tutorial!\n\nYou may now disable the 'Follow Me' functionality if you wish. If you want to do the tutorial again, return to step 1 using the menu."
+            "Congratulations! You have finished the tutorial!\n\nYou may now disable the 'Follow Me' functionality if you wish. If you want to do the tutorial again, press the 'Next' button. Alternatively, you can return to the Home screen by pressing 'Close' at the top right."
         },
     };
 
@@ -564,7 +575,6 @@ public class TutorialController : MonoBehaviour
     private void LoadProgress(int step)
     {
         if (step < 0 || step >= tutorialSteps.Length) return;
-        
         /*
         if (step == 7)
         {
@@ -573,9 +583,9 @@ public class TutorialController : MonoBehaviour
         }
         else
         {
-            uniqueSlide.SetActive(false);
-            mainSlide.SetActive(true);
         */
+            //uniqueSlide.SetActive(false);
+            //mainSlide.SetActive(true);
 
             // Clear previous content
             tutorialText.text = "";
@@ -588,39 +598,10 @@ public class TutorialController : MonoBehaviour
             // Load text
             tutorialText.text = tutorialSteps[step][0];
 
-            // Load image or video if available
-            if (tutorialSteps[step].Length > 1)
-            {
-                string mediaPath = tutorialSteps[step][1];
-
-                if (mediaPath.StartsWith("Images/"))
+                // Load image or video if available
+                if (tutorialSteps[step].Length > 1)
                 {
-                    //Sprite imageSprite = Resources.Load<Sprite>(mediaPath);
-                    Sprite imageSprite = LoadImageSprite(mediaPath);
-
-                    if (imageSprite != null)
-                    {
-                        tutorialImage.sprite = imageSprite;
-                        tutorialImage.enabled = true;
-                    }
-                }
-                else if (mediaPath.StartsWith("Videos/"))
-                {
-                    VideoClip videoClip = Resources.Load<VideoClip>(mediaPath);
-
-                    if (videoClip != null)
-                    {
-                        Video_RawImage.enabled = true;
-                        tutorialVideo.clip = videoClip;
-                        tutorialVideo.enabled = true;
-                        OnVideoPrepared(tutorialVideo);
-                        tutorialVideo.Play();
-                    }
-                }
-
-                if (tutorialSteps[step].Length > 2)
-                {
-                    mediaPath = tutorialSteps[step][2];
+                    string mediaPath = tutorialSteps[step][1];
 
                     if (mediaPath.StartsWith("Images/"))
                     {
@@ -646,8 +627,37 @@ public class TutorialController : MonoBehaviour
                             tutorialVideo.Play();
                         }
                     }
+
+                    if (tutorialSteps[step].Length > 2)
+                    {
+                        mediaPath = tutorialSteps[step][2];
+
+                        if (mediaPath.StartsWith("Images/"))
+                        {
+                            //Sprite imageSprite = Resources.Load<Sprite>(mediaPath);
+                            Sprite imageSprite = LoadImageSprite(mediaPath);
+
+                            if (imageSprite != null)
+                            {
+                                tutorialImage.sprite = imageSprite;
+                                tutorialImage.enabled = true;
+                            }
+                        }
+                        else if (mediaPath.StartsWith("Videos/"))
+                        {
+                            VideoClip videoClip = Resources.Load<VideoClip>(mediaPath);
+
+                            if (videoClip != null)
+                            {
+                                Video_RawImage.enabled = true;
+                                tutorialVideo.clip = videoClip;
+                                tutorialVideo.enabled = true;
+                                OnVideoPrepared(tutorialVideo);
+                                tutorialVideo.Play();
+                            }
+                        }
+                    }
                 }
-            }
         //}
 
         Sprite LoadImageSprite(string imagePath)
@@ -680,7 +690,42 @@ public class TutorialController : MonoBehaviour
 
     public void GoToNextStep()
     {
+        /*
         int currentProgress = userData.progress;
+
+        if (currentProgress == 7)
+        {
+            if (AreAllBoxesChecked())
+            {
+                // Proceed to the next step if all checkboxes are ticked
+                if (currentProgress < tutorialSteps.Length - 1)
+                {
+                    currentProgress++;
+                    LoadProgress(currentProgress);
+                    // Save the new progress value to the UserData instance for the current user
+                    loginManager.SaveUserProgress(currentProgress);
+                }
+            }
+            else
+            {
+                // Display a message or play a sound to indicate that the user must tick all checkboxes before proceeding
+                Debug.Log("Please tick all checkboxes before proceeding.");
+            }
+        }
+        else
+        {
+            // Proceed to the next step as usual
+            if (currentProgress < tutorialSteps.Length - 1)
+            {
+                currentProgress++;
+                LoadProgress(currentProgress);
+                // Save the new progress value to the UserData instance for the current user
+                loginManager.SaveUserProgress(currentProgress);
+            }
+        }
+        */
+        int currentProgress = userData.progress;
+
         if (currentProgress < tutorialSteps.Length - 1)
         {
             currentProgress++;
@@ -688,10 +733,20 @@ public class TutorialController : MonoBehaviour
             // Save the new progress value to the UserData instance for the current user
             loginManager.SaveUserProgress(currentProgress);
         }
+        else
+        {
+            currentProgress = 0;
+            LoadProgress(currentProgress);
+            // Save the new progress value to the UserData instance for the current user
+            loginManager.SaveUserProgress(currentProgress);
+        }
     }
+    
 
     public void GoToPreviousStep()
     {
+        //Debug.Log("Previous called");
+
         int currentProgress = userData.progress;
         if (currentProgress > 0)
         {
@@ -701,12 +756,15 @@ public class TutorialController : MonoBehaviour
             loginManager.SaveUserProgress(currentProgress);
         }
     }
+
     /*
-    public bool AreAllCheckboxesTicked()
+    public bool AreAllBoxesChecked()
     {
-        foreach (Toggle checkbox in checkboxes)
+        foreach (GameObject checkbox in checkboxes)
         {
-            if (!checkbox.isOn)
+            Transform checkBoxCheck = checkbox.transform.Find("CheckBoxCheck");
+
+            if (!checkBoxCheck.gameObject.activeSelf)
             {
                 return false;
             }
