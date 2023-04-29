@@ -6445,7 +6445,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487607059}
   m_LocalRotation: {x: 0, y: 0.08715578, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 0, z: 0.4818}
+  m_LocalPosition: {x: 0, y: 0, z: 0.4788}
   m_LocalScale: {x: 0.00016, y: 0.00016, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6454,7 +6454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 10, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -405.19177, y: -247.309}
+  m_AnchoredPosition: {x: -405.1989, y: -247.309}
   m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &487607061
@@ -8639,6 +8639,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 614950019}
+  nextButtonText: {fileID: 1103176770}
+  previousButtonText: {fileID: 1666065069}
   tutorialImage: {fileID: 1925534489}
   tutorialVideo: {fileID: 2091823912}
   userData:
@@ -20756,7 +20758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -10, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -405.8939, y: -247.31299}
+  m_AnchoredPosition: {x: -405.88696, y: -247.31299}
   m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925534489

@@ -2,15 +2,19 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using Microsoft.MixedReality.Toolkit.UI;
 
 public class TutorialController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI tutorialText;
+    [SerializeField] private TextMeshProUGUI nextButtonText;
+    [SerializeField] private TextMeshProUGUI previousButtonText;
     [SerializeField] private Image tutorialImage;
     [SerializeField] private VideoPlayer tutorialVideo;
     [SerializeField] private UserData userData;
     [SerializeField] private LoginManager loginManager;
     public RawImage Video_RawImage;
+    //[SerializeField] private FollowMeToggle followMeToggle;
     //[SerializeField] private GameObject uniqueSlide;
     //[SerializeField] private GameObject mainSlide;
     //public GameObject[] checkboxes;
@@ -26,17 +30,17 @@ public class TutorialController : MonoBehaviour
         new string[] { "Before we begin, make sure you take off all loose jewelry like long necklaces and clothing items such as unzipped jackets. \n\nIf you have long hair, tie it back so it does not get in the way."},
         
         //3
-        new string[] { "Make sure the area around you is clear. There should be ample space to move in front of the MELD machine and the console. With the headset, you are more prone to tripping, so check the floor as well. \n\nPage 1/2"},
+        new string[] { "Make sure the area around you is clear. There should be ample space to move in front of the MELD machine and the console. With the headset, you are more prone to tripping, so check the floor as well. \n\nPart 1/2"},
         
         //4
-        new string[] { "If you have not done so yet, put on safety glasses. There is a step where you use an air spray to clear the base plate and metal flakes will fly towards you. The HoloLens alone will not ensure protection from the flakes damaging your eyes. \n\nPage 2/2"},
+        new string[] { "If you have not done so yet, put on safety glasses. There is a step where you use an air spray to clear the base plate and metal flakes will fly towards you. The HoloLens alone will not ensure protection from the flakes damaging your eyes. \n\nPart 2/2"},
         
         //5
-        new string[] { "As said before, the MELD machine has many safety features. Let’s walk through them. \n\nWhen the MELD machine is running, the doors must remain closed. If the doors open, the machine will stop (like a microwave), but it will mess up the print. \n\nPage 1/2", 
+        new string[] { "As said before, the MELD machine has many safety features. Let’s walk through them. \n\nWhen the MELD machine is running, the doors must remain closed. If the doors open, the machine will stop (like a microwave), but it will mess up the print. \n\nPart 1/2", 
         "Images/remoteImage" },
         
         //6
-        new string[] { "There is an emergency stop button at the stop left of the console. If something goes wrong, do not hesitate to press the button. Prints are cheap to restart, repairs and medical bills are not cheap. \n\nThe “remote jog handle” also has an emergency stop and a “deadman” switch. The deadman switch means you must hold the switch down in order to move the actuator during preparation. We will cover this in the tutorial. \n\n Page 2/2", 
+        new string[] { "There is an emergency stop button at the top left of the console. If something goes wrong, do not hesitate to press the button. Prints are cheap to restart, repairs and medical bills are not cheap. \n\nThe “remote jog handle” also has an emergency stop and a “deadman” switch. The deadman switch means you must hold the switch down in order to move the actuator during preparation. We will cover this in the tutorial. \n\n Part 2/2", 
         "Images/remoteImage" },
         
         //7
@@ -54,14 +58,14 @@ public class TutorialController : MonoBehaviour
 
         //10
         new string[] {
-            "First, we need to turn on the machine. Go to the back of the machine and twist the power switch.",
+            "For this step and the following one, you will be moving around a bit, so press the 'Follow Me' option at the top right of the panel.\n\nNow, we need to turn on the machine. Go to the back of the machine and twist the power switch. See the video to the right for its exact location.",
             "Videos/Slide08"
         },
 
         //Slide09
         //11
         new string[] {
-            "Next, turn on the water. The switch is to the right of the machine when looking from the back. The water is needed to cool down the machine during printing. \n\nThen, return to the front of the machine.",
+            "Now, turn on the water. The switch is located at the back right of the machine (see video). It looks like a light switch. The water is needed to cool down the machine during printing. \n\nReturn to the front of the machine.",
             "Videos/Slide09"
         },
 
@@ -73,7 +77,7 @@ public class TutorialController : MonoBehaviour
 
         //13
         new string[] {
-            "The console is where most of the control is done. Once the software is loaded, reset the emergency and enable all the drives. You may need to close any pop up menus.",
+            "The console is where most of the control is done. Once the software is loaded, reset the emergency stop (EStop) and enable all the drives. You may need to close any pop up menus.",
             "Videos/Slide11"
         },
 
@@ -97,8 +101,12 @@ public class TutorialController : MonoBehaviour
 
         //17
         new string[] {
-            "The following is an overview of the next steps, so do not perform any of these quite yet: we will need to insert the printing material (a.k.a the feed) and set the substrate in position. First, you set the substrate in position and tighten it down. Then you calibrate the positioning of the tool inside the machine. Lastly, you set a reload position and insert the feed. Before we set the substrate in position, we may need to move the platform closer to the door and/or move the tool away from the platform depending on its current position."
+            "The following is an overview of the next steps, so do NOT perform any of these yet: we will need to insert the printing material (a.k.a the feed) and set the substrate in position. First, you set the substrate in position and tighten it down. Then you calibrate the positioning of the tool (the part that pushes the material onto the substrate) inside the machine. \n\nPart 1/2"
         }, 
+
+        new string[] {
+            "Lastly, you set a reload position and insert the feed. However, before we set the substrate in position, we may need to move the platform closer to the door and/or move the tool away from the platform.\n\nPart 2/2"
+        },
 
         //18
         new string[] {
@@ -113,11 +121,11 @@ public class TutorialController : MonoBehaviour
 
         //20
         new string[] {
-            "The second three buttons are the x1, x10, and x100 buttons. These set which speed you want to move the machine with \n\nThe black wheel at the bottom allows you to move the machine in the positive or negative direction with respect to the axis that you choose (X, Y, or Z). To the right is positive and to the left is negative.\n\nPage 1/2"
+            "The second three buttons are the x1, x10, and x100 buttons. These set which speed you want to move the machine with \n\nThe black wheel at the bottom allows you to move the machine in the positive or negative direction with respect to the axis that you choose (X, Y, or Z). To the right is positive and to the left is negative.\n\nPart 1/2"
         },
 
         new string[] {
-            "Finally, the button 'MPG Feed' will toggle the mode of the controller so that you can move the machine.\n\n Page 2/2"
+            "Finally, the button 'MPG Feed' will toggle the mode of the controller so that you can move the machine.\n\n Part 2/2"
         },
 
         //21
@@ -133,7 +141,7 @@ public class TutorialController : MonoBehaviour
         //23
         new string[] {
             "Let’s begin the process. \n\nFirst, press “MPG Feed” on the controller and make sure the red light by the button turns on.\n\nThen, if the tool is too close to the platform, move it up so that it is out of the way. Then you can move the platform so that the substrate holder is comfortably within reach.",
-            "Images/EmptyPlatform"
+            "Images/PlatformReach"
         },
 
         //19 in manual
@@ -157,7 +165,8 @@ public class TutorialController : MonoBehaviour
         //26
         new string[] {
             "Re-twist the pieces on top of the substrate and set the golden-colored holders back into place.",
-            "Videos/Slide22"
+            "Videos/Slide22",
+            "Images/GoldenColoredHolders"
         },
 
         //27
@@ -167,11 +176,10 @@ public class TutorialController : MonoBehaviour
             "Videos/Slide23"
         }, 
 
-        //I think this is wrong?
         //28
         new string[] {
-            "For a smooth print, it is good to wipe the substrate with acetone. Using a cloth and the bottle of acetone, squirt acetone onto the substrate and wipe the acetone across the surface. Do this 1-2 times, depending on if the plate is fully coated. Excess will be wiped off."//,
-            //"Videos/AcetoneSpray"
+            "For a smooth print, it is good to wipe the substrate with acetone. Using a cloth and the bottle of acetone, squirt acetone onto the substrate and wipe the acetone across the surface. Do this 1-2 times, depending on if the plate is fully coated. Excess will be wiped off.",
+            "Videos/Slide24"
         },
 
         //29
@@ -182,15 +190,20 @@ public class TutorialController : MonoBehaviour
 
         //30
         new string[] {
-            "You will need to calibrate all three axes. The Z is the hardest, so we will start with X and Y. The X and Y positions need to be adjusted so that the actuator is above where we want to start printing. \n\nFor the Y-axis, the actuator needs to be lined up in the middle of the substrate (halfway on the short side). You will need to go around the side of the machine and look through the window to properly align this.",
-            "Images/PrintLocation",
-            "Videos/Slide26"
+            "You will need to calibrate all three axes. The Z is the hardest, so we will start with X and Y. The X and Y positions need to be adjusted so that the actuator is above where we want to start printing. Remember to toggle 'MPG Feed'!\n\nThe image on the left shows the calibration target.",
+            "Images/PrintPosition"
         },
 
         //31
         new string[] {
-            "For the X-axis, the actuator needs to be positioned near the end of the substrate (on the long side). The substrate is 12 inches in length and the loaf that you will print will be 9 inches long. This means you should move the actuator in the X axis to 1.5 inches away from the end of the plate so that the print can fit on the substrate. \n\nYou will need to adjust both together. Remember to toggle the 'MPG Feed'",
-            "Images/PrintLocation"
+            "For the Y-axis, the actuator needs to be lined up in the middle of the substrate (halfway on the short side). You will need to go around the side of the machine and look through the window to properly align this. It may also help to lower the Z-axis closer to the substrate.",
+            "Images/PrintPosition"
+        },
+
+        new string[] {
+            "For the X-axis, the actuator needs to be positioned near the end of the substrate (on the long side). The substrate is 12 inches in length and the loaf that you will print will be 9 inches long. This means you should move the actuator in the X axis to 1.5 inches away from the end of the plate so that the print can fit on the substrate.",
+            "Images/PrintPosition",
+            "Videos/Slide26"
         },
 
         //32
@@ -216,19 +229,20 @@ public class TutorialController : MonoBehaviour
 
         //36
         new string[] {
-            "Use your left hand to slide a piece of paper back and forth underneath the tool. Do not move your finger underneath the tool, only the paper! Your finger will otherwise get smooshed, guaranteed. There should be a piece of paper in the tool cart.",
+            "Use your left hand to slide a piece of paper underneath the tool. Do not move your finger underneath the tool, only the paper! There should be a piece of paper in the tool cart.\n\n Part 1/2",
             "Videos/Slide31"
         },
 
         //37
         new string[] {
-            "Then, place the controller on the ledge of the machine. Hold the controller between your thumb and your middle finger, which will be on the deadman switch. Your index finger will slowly move the wheel. Do not spin the wheel fast, or your accuracy will be off \n\nWhen the paper stops sliding and gets caught under the tool, stop moving the wheel. Then set “Zero Z” on the console.",
+            "Then, place the controller on the ledge of the machine. Hold the controller between your thumb and your middle finger, which will be on the deadman switch. Your index finger will slowly move the wheel. Do not spin the wheel fast, or your accuracy will be off \n\nWhen the paper is no longer able to slide around, stop moving the wheel. Then set “Zero Z” on the console.\n\nPart 2/2",
             "Videos/Slide31"
         },
 
         //38
         new string[] {
-            "Now that the machine is calibrated, we can set a reload position. Move the actuator far above the substrate so you can easily fit a long rod underneath it. DO NOT move the Z axis down into the plate. Move it at 1x speed in the + direction and watch the numbers on the screen to make sure you are going in the right direction before switching to a faster speed.\n\nAlso, move the platform (X,Y) towards the doors."
+            "Now that the machine is calibrated, we can set a reload position. Move the actuator far above the substrate so you can easily fit a long rod underneath it. DO NOT move the Z axis down into the plate. Move it at 1x speed in the + direction and watch the numbers on the screen to make sure you are going in the right direction before switching to a faster speed.\n\nAlso, move the platform (X,Y) towards the doors.",
+            "Images/ReloadPosition"
         },
 
         //39
@@ -283,18 +297,18 @@ public class TutorialController : MonoBehaviour
 
         //48
         new string[] {
-            "On the console, press the “Gcode” button. Find and select “6-Hamed0AL6061-T0.06.nc”.",
+            "On the console, press the “Gcode” button. Find and select “6-Hamed0AL6061-T0.06.nc”, then press close.\n\nPart 1/3.",
             "Images/MELD_GCode"
         },
 
         //49
         new string[] {
-            "The Gcode follows these simple steps:\nM04 S300 sets the spindle speed at 300 rotations per second, the speed at which the tool rotates.\nM24 S6000 sets the rod push down speed at 6 inches per minute.\nX-9 tells the source to move to current x (0 at the beginning) minus nine, or nine inches.\n\nPage 1/2",
+            "The Gcode follows these simple steps:\nM04 S300 sets the spindle speed at 300 rotations per second, the speed at which the tool rotates.\nM24 S6000 sets the rod push down speed at 6 inches per minute.\nX-9 tells the source to move to current x (0 at the beginning) minus nine, or nine inches.\n\nPart 2/3",
             "Images/MELD_GCode"
         },
 
         new string[] {
-            "Then it moves vertically in a zig-zag direction up to the next layer.\nFinally, it moves back nine inches to the initial location.\nOverall, it goes left 9 inches, up to the next layer, then right 9 inches.\nAfter that, it stops and returns to the reload position.\n\nPage 2/2",
+            "Then it moves vertically in a zig-zag direction up to the next layer.\nFinally, it moves back nine inches to the initial location.\nOverall, it goes left 9 inches, up to the next layer, then right 9 inches.\nAfter that, it stops and returns to the reload position.\n\nPart 3/3",
             "Images/MELD_GCode"
         },
 
@@ -546,19 +560,19 @@ public class TutorialController : MonoBehaviour
 
         //88
         new string[] {
-            "At the top right of this page, you should see a 'Follow Me' option next to the exit button. This will make it so that this UI element moves with you. Please press this before completing the next step.\n\nNow, go to the back of the machine and twist the power switch off.",
+            "As before, press the 'Follow Me' option.\n\nNow, go to the back of the machine and twist the power switch off.",
             "Videos/Slide66"
         },  
 
         //89
         new string[] {
-            "Finally, turn off the water. The switch is to the right of the machine when looking from the back.\n\nThen, return to the front of the machine.",
+            "Finally, turn off the water. The switch is located at the back right of the machine (see associated video).\n\nThen, return to the front of the machine.",
             "Videos/Slide67"
         },
 
         //90
         new string[] {
-            "Congratulations! You have finished the tutorial!\n\nYou may now disable the 'Follow Me' functionality if you wish. If you want to do the tutorial again, press the 'Next' button. Alternatively, you can return to the Home screen by pressing 'Close' at the top right."
+            "Congratulations! You have finished the tutorial!\n\n If you want to do the tutorial again, press the 'Next' button. Alternatively, you can return to the Home screen by pressing 'Close' at the top right."
         },
     };
 
@@ -597,6 +611,17 @@ public class TutorialController : MonoBehaviour
 
             // Load text
             tutorialText.text = tutorialSteps[step][0];
+
+            if(step == 83)
+            {
+                previousButtonText.text = "Another Run";
+                nextButtonText.text = "Finish print";
+            }
+            else
+            {
+                previousButtonText.text = "Previous";
+                nextButtonText.text = "Next";
+            }
 
                 // Load image or video if available
                 if (tutorialSteps[step].Length > 1)
@@ -748,12 +773,20 @@ public class TutorialController : MonoBehaviour
         //Debug.Log("Previous called");
 
         int currentProgress = userData.progress;
-        if (currentProgress > 0)
+        if(currentProgress == 83)
         {
-            currentProgress--;
-            LoadProgress(currentProgress);
-            // Save the new progress value to the UserData instance for the current user
+            LoadProgress(76);
             loginManager.SaveUserProgress(currentProgress);
+        }
+        else
+        {
+            if (currentProgress > 0)
+            {
+                currentProgress--;
+                LoadProgress(currentProgress);
+                // Save the new progress value to the UserData instance for the current user
+                loginManager.SaveUserProgress(currentProgress);
+            }
         }
     }
 
