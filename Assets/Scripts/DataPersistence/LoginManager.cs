@@ -25,7 +25,7 @@ public class LoginManager : MonoBehaviour
     private bool isBreakTime = false;
     private bool loggedIn = false; // Add this line
 
-    private float autosaveInterval = 60f;
+    private float autosaveInterval = 300f;
     private float timeSinceLastAutosave = 0f;
 
     private void Awake()
@@ -184,7 +184,6 @@ public class LoginManager : MonoBehaviour
 
     private void Update()
     {
-        //Should be working
         /*
         if (loggedIn)
         {
