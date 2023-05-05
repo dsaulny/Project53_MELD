@@ -25,6 +25,10 @@ public class ObjDetect : MonoBehaviour
     public float detectionThreshold = 0.60f;
     //public RawImage cameraView;
     
+    private int targetFPS = 30;
+    private int targetWidth = 1280;
+    private int targetHeight = 720;
+
 
 
     void Start()
@@ -32,7 +36,7 @@ public class ObjDetect : MonoBehaviour
 
         objToggle.isOn = false;
         WebCamDevice[] devices = WebCamTexture.devices;
-        camTexture = new WebCamTexture(devices[0].name);
+        camTexture = new WebCamTexture(devices[0].name, targetWidth, targetHeight, targetFPS);
         runtimeModel = ModelLoader.Load(yoloModel);
         worker = WorkerFactory.CreateWorker(WorkerFactory.Type.Auto, runtimeModel);
         outputLayerName = runtimeModel.outputs[runtimeModel.outputs.Count - 1];
@@ -43,7 +47,7 @@ public class ObjDetect : MonoBehaviour
     void Update()
     {
 
-        if (Time.frameCount % 100 == 0)
+        if (Time.frameCount % 500 == 0)
         {
             detect();
         }
