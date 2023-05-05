@@ -47,7 +47,7 @@ public class ObjDetect : MonoBehaviour
     void Update()
     {
 
-        if (Time.frameCount % 500 == 0)
+        if (Time.frameCount % 20 == 0)
         {
             detect();
         }
@@ -79,6 +79,7 @@ public class ObjDetect : MonoBehaviour
         }
         else
         {
+            camTexture.Stop();
             UnityEngine.Debug.Log($"Toggle is not on");
         }
 
@@ -157,7 +158,7 @@ public class ObjDetect : MonoBehaviour
 
         float maxConf = tensor[0, 0, 5, row];
 
-        for (int i = 0; i < 17; i++)
+        for (int i = 0; i < 7; i++)
         {
             if (tensor[0, 0, 5 + i, row] > maxConf)
             {
@@ -177,7 +178,7 @@ public class ObjDetect : MonoBehaviour
 
     private string GetClassName(int classIndex)
     {
-        string[] classNames = { "AL loaf", "AL rod", "MELD door", "MELD interface", "MELD machine", "MELD tool", "actuator", "base plate", "buttons", "control knob", "emergency button", "interface screen", "power button", "pressure gauge", "temp switch", "thermometer", "wrench" };
+        string[] classNames = { "AL loaf", "AL rod", "MELD tool", "actuator", "base plate", "control knob", "emergency button" };
         if (classIndex >= 0 && classIndex < classNames.Length)
         {
             // Return the corresponding class name
