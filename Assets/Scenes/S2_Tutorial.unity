@@ -19282,7 +19282,7 @@ MonoBehaviour:
   interactable: {fileID: 1035399470}
   seeItSayItLabel: {fileID: 1997811561}
   seeItSayItLabelText: {fileID: 829983334}
-  iconStyle: 1
+  iconStyle: 3
   iconCharLabel: {fileID: 2067058738}
   iconCharFont: {fileID: 0}
   iconChar: 0
@@ -20983,7 +20983,7 @@ MonoBehaviour:
   interactable: {fileID: 1143864886}
   seeItSayItLabel: {fileID: 2075650484}
   seeItSayItLabelText: {fileID: 289593951}
-  iconStyle: 1
+  iconStyle: 3
   iconCharLabel: {fileID: 445556043}
   iconCharFont: {fileID: 0}
   iconChar: 0
