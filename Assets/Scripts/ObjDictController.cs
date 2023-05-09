@@ -14,23 +14,21 @@ public class ObjDictController : MonoBehaviour
         new string[] { "This is an emergency stop button.  It is located at the top left of the MELD console.  It is used to stop all operation in the case of possible dangers that is notified through warnings or any beliefs that something is wrong",
         "Images/emergency" },
 
-        new string[] { "This is an emergency stop button.  It is located at the top left of the MELD console.  It is used to stop all operation in the case of possible dangers that is notified through warnings or any beliefs that something is wrong",
-        "Images/remoteImage" },
+        new string[] { "This is a MELD rod, and it is an input for the MELD tool.  These rods can be found on the left cart with the other additional tools label MELD TOOL in small cardboard boxes",
+        "Images/MELD Rod" },
 
-        new string[] { "This is an emergency stop button.  It is located at the top left of the MELD console.  It is used to stop all operation in the case of possible dangers that is notified through warnings or any beliefs that something is wrong",
-        "Images/remoteImage" },
+        new string[] { "This is the baseplate of the MELD machine.  It is where the melding operation will be done or it is a standalone plate which needs to be positioned and secured using clamps",
+        "Images/baseplate" },
 
-        new string[] { "This is an emergency stop button.  It is located at the top left of the MELD console.  It is used to stop all operation in the case of possible dangers that is notified through warnings or any beliefs that something is wrong",
-        "Images/remoteImage" },
+        new string[] { "This is the remote jog handle, which can be found on the left side of the MELD interface.  Its main functionality is to control the movement of the MELD Tool.  By spinning the handle, you can adjust the x,y,z position of the tool.  In addition, there is also a deadman switch on the side for possible malfunction",
+        "Images/remotehandle" },
 
-        new string[] { "This is an emergency stop button.  It is located at the top left of the MELD console.  It is used to stop all operation in the case of possible dangers that is notified through warnings or any beliefs that something is wrong",
-        "Images/remoteImage" },
+        new string[] { "This is an aluminum loaf, which is the main product of this specific printing project.  The goal is to transform an aluminum rod through the process of melding into the final product. Be careful when handling after print!!!",
+        "Images/ALloaf" },
 
-        new string[] { "This is an emergency stop button.  It is located at the top left of the MELD console.  It is used to stop all operation in the case of possible dangers that is notified through warnings or any beliefs that something is wrong",
-        "Images/remoteImage" },
+        new string[] { "This is the MELD TOOL and the main processor of the MELD machine.  It will perform the melding process from whichever material that was fed to it will need to be positioned in order to print correctly",
+        "Images/bottom_tool" },
 
-        new string[] { "This is an emergency stop button.  It is located at the top left of the MELD console.  It is used to stop all operation in the case of possible dangers that is notified through warnings or any beliefs that something is wrong",
-        "Images/remoteImage" }
     };
 
     public void fillPanel()
@@ -128,7 +126,7 @@ public class ObjDictController : MonoBehaviour
                     }
                 }
                 break;
-            case "MELD tool":
+            case "MELD Tool":
                 // Load text
                 tutorialText.text = ObjDef[5][0];
                 mediaPath = ObjDef[5][1];

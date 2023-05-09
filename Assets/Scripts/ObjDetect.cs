@@ -22,7 +22,7 @@ public class ObjDetect : MonoBehaviour
     private IWorker worker;
     private string outputLayerName;
     public Toggle objToggle;
-    public float detectionThreshold = 0.60f;
+    public float detectionThreshold = 0.50f;
     //public RawImage cameraView;
     bool camStarted = false;
     private int targetFPS = 30;
@@ -47,7 +47,7 @@ public class ObjDetect : MonoBehaviour
     void Update()
     {
 
-        if (Time.frameCount % 200 == 0)
+        if (Time.frameCount % 100 == 0)
         {
             detect();
         }
@@ -160,7 +160,7 @@ public class ObjDetect : MonoBehaviour
 
         float maxConf = tensor[0, 0, 5, row];
 
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 6; i++)
         {
             if (tensor[0, 0, 5 + i, row] > maxConf)
             {
@@ -180,7 +180,7 @@ public class ObjDetect : MonoBehaviour
 
     private string GetClassName(int classIndex)
     {
-        string[] classNames = { "AL loaf", "AL rod", "MELD tool", "actuator", "base plate", "control knob", "emergency button" };
+        string[] classNames = { "AL loaf", "MELD rod", "MELD Tool", "base plate", "remote jog handle", "emergency button" };
         if (classIndex >= 0 && classIndex < classNames.Length)
         {
             // Return the corresponding class name
