@@ -14,19 +14,16 @@ public class ObjDictController : MonoBehaviour
         new string[] { "This is an emergency stop button.  It is located at the top left of the MELD console.  It is used to stop all operation in the case of possible dangers that is notified through warnings or any beliefs that something is wrong",
         "Images/emergency" },
 
-        new string[] { "This is a MELD rod, and it is an input for the MELD tool.  These rods can be found on the left cart with the other additional tools label MELD TOOL in small cardboard boxes",
-        "Images/MELD Rod" },
-
-        new string[] { "This is the baseplate of the MELD machine.  It is where the melding operation will be done or it is a standalone plate which needs to be positioned and secured using clamps",
+        new string[] { "This is the baseplate of the MELD machine.  The base plate is what holds the substrate to the platform of the machine. When placing the substrate, make sure the base plate screws hold the substrate down tightly!",
         "Images/baseplate" },
 
-        new string[] { "This is the remote jog handle, which can be found on the left side of the MELD interface.  Its main functionality is to control the movement of the MELD Tool.  By spinning the handle, you can adjust the x,y,z position of the tool.  In addition, there is also a deadman switch on the side for possible malfunction",
+        new string[] { "This is the remote jog handle, which can be found on the left side of the MELD interface. The controller to move the machine. Press MPG Feed, select the axis you want to move, select the speed, hold the deadman switch, and then twist the black knob. If you don't think it's working, look at the numbers on the screen. Select speed 100x if you're far away from the platform",
         "Images/remotehandle" },
 
-        new string[] { "This is an aluminum loaf, which is the main product of this specific printing project.  The goal is to transform an aluminum rod through the process of melding into the final product. Be careful when handling after print!!!",
+        new string[] { "This is an aluminum loaf, which is the main product of this specific printing project. The machine cannot print parts smaller than this. The part usually needs machining to finalize the product. Be careful when handling after print!!!",
         "Images/ALloaf" },
 
-        new string[] { "This is the MELD TOOL and the main processor of the MELD machine.  It will perform the melding process from whichever material that was fed to it will need to be positioned in order to print correctly",
+        new string[] { "This is the connected MELD tool and it is the equivalent of the nozzel in a normal 3D printer. It is where the feed material comes out of as it presses down on the substrate. The tool can determine the width of the loaf.  Here the tool has a water cooling jacket attached to it.",
         "Images/bottom_tool" },
 
     };
@@ -58,7 +55,24 @@ public class ObjDictController : MonoBehaviour
                     }
                 }
                 break;
-            case "MELD rod":
+            /*case "MELD rod":
+                // Load text
+                tutorialText.text = ObjDef[1][0];
+                mediaPath = ObjDef[1][1];
+
+                if (mediaPath.StartsWith("Images/"))
+                {
+                    
+                    imageSprite = LoadImageSprite(mediaPath);
+
+                    if (imageSprite != null)
+                    {
+                        tutorialImage.sprite = imageSprite;
+                        tutorialImage.enabled = true;
+                    }
+                }
+                break;*/
+            case "base plate":
                 // Load text
                 tutorialText.text = ObjDef[1][0];
                 mediaPath = ObjDef[1][1];
@@ -75,7 +89,7 @@ public class ObjDictController : MonoBehaviour
                     }
                 }
                 break;
-            case "base plate":
+            case "remote jog handle":
                 // Load text
                 tutorialText.text = ObjDef[2][0];
                 mediaPath = ObjDef[2][1];
@@ -92,7 +106,7 @@ public class ObjDictController : MonoBehaviour
                     }
                 }
                 break;
-            case "remote jog handle":
+            case "AL loaf":
                 // Load text
                 tutorialText.text = ObjDef[3][0];
                 mediaPath = ObjDef[3][1];
@@ -109,27 +123,10 @@ public class ObjDictController : MonoBehaviour
                     }
                 }
                 break;
-            case "AL loaf":
+            case "MELD Tool":
                 // Load text
                 tutorialText.text = ObjDef[4][0];
                 mediaPath = ObjDef[4][1];
-
-                if (mediaPath.StartsWith("Images/"))
-                {
-                    
-                    imageSprite = LoadImageSprite(mediaPath);
-
-                    if (imageSprite != null)
-                    {
-                        tutorialImage.sprite = imageSprite;
-                        tutorialImage.enabled = true;
-                    }
-                }
-                break;
-            case "MELD Tool":
-                // Load text
-                tutorialText.text = ObjDef[5][0];
-                mediaPath = ObjDef[5][1];
 
                 if (mediaPath.StartsWith("Images/"))
                 {

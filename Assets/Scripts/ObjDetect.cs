@@ -84,7 +84,7 @@ public class ObjDetect : MonoBehaviour
         {
             camStarted = false;
             camTexture.Stop();
-            UnityEngine.Debug.Log($"Toggle is not on");
+            //UnityEngine.Debug.Log($"Toggle is not on");
         }
 
     }
@@ -137,6 +137,8 @@ public class ObjDetect : MonoBehaviour
             if (maxScore < thresholdMax)
                 continue;
             UnityEngine.Debug.Log($"Image was recognised as {className}");
+            if (className == "MELD rod")
+                continue;
             if (className != null)
             {
                 outputClass.text = className;
